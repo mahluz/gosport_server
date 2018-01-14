@@ -37,8 +37,8 @@ class DatabaseSeeder extends Seeder
     		"id"=>1,
     		"role_id"=>1,
     		"name"=>"zulham",
-    		"email"=>"asegaf@ymail.com",
-    		"password"=>bcrypt("zulhamganteng"),
+    		"email"=>"admin@gmail.com",
+    		"password"=>bcrypt("admin"),
             "status"=>"free"
     	]);
 
