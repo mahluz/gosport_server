@@ -15,6 +15,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('checking',function(){
+
+	switch(Auth::user()->role_id){
+		case '1':
+			return redirect('main');
+		break;
+		default:
+			return redirect('/');
+		break;
+	}
+
+});
+
+// standar route
+Route::group(['middleware'=>'web'],function(){
+	Route::group(['middleware'=>'userMiddleware:1'],function(){
+		Route::get('main','MainController@index');
+
+		Route::get('jasa','ServiceController@index');
+		Route::group(['prefix'=>'jasa'],function(){
+
+		});
+		// end jasa group
+	});
+	// end user middleware
+});
+
 // API routes
 Route::group(['middleware'=>'api','prefix'=>'api'],function(){
 	Route::post('auth/login','ApiController@login');

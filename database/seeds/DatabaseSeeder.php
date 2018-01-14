@@ -4,6 +4,9 @@ use Illuminate\Database\Seeder;
 
 use App\Role;
 use App\User;
+use App\Service;
+use App\Packet;
+use App\Place;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,11 +35,42 @@ class DatabaseSeeder extends Seeder
 
     	User::create([
     		"id"=>1,
-    		"role_id"=>2,
+    		"role_id"=>1,
     		"name"=>"zulham",
     		"email"=>"asegaf@ymail.com",
-    		"password"=>bcrypt("zulhamganteng")
+    		"password"=>bcrypt("zulhamganteng"),
+            "status"=>"free"
     	]);
+
+        Service::create([
+            "id"=>1,
+            "service" => "Aerobic",
+            "description" => "something"
+        ]);
+
+        Packet::create([
+            "id"=>1,
+            "service_id"=>1,
+            "packet"=>"Aerobic Happy"
+        ]);
+
+        Packet::create([
+            "id"=>2,
+            "service_id"=>1,
+            "packet"=>"Aerobic Lansia"
+        ]);
+
+        Place::create([
+            "id"=>1,
+            "service_id"=>1,
+            "place"=>"UNNES"
+        ]);
+
+        Place::create([
+            "id"=>2,
+            "service_id"=>1,
+            "place"=>"Rumah Saya"
+        ]);
 
     }
 }
