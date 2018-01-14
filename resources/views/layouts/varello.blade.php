@@ -118,7 +118,7 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" data-dropdown-in="flipInX" data-dropdown-out="zoomOut">
-                            <li class="hidden-sm hidden-xs hidden-md"><a href="#">Welcome to <strong>Arda</strong>gram</a></li>
+                            <li class="hidden-sm hidden-xs hidden-md"><a href="#">Welcome to <strong>Go</strong>Sport</a></li>
                             {{-- <li class="item-feed dropdown">
                                 <a href="#" class="item-feed-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-envelope"></span> <span class="badge badge-primary item-feed-badge">15</span></a>
                                 <ul class="dropdown-menu dropdown-menu-messages">
