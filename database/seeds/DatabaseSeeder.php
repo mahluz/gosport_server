@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         Role::create([
         	"id"=>2,
-        	"role"=>"client"
+        	"role"=>"customer"
         ]);
 
         Role::create([

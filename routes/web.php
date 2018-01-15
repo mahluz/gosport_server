@@ -38,11 +38,21 @@ Route::group(['middleware'=>'web'],function(){
 	Route::group(['middleware'=>'userMiddleware:1'],function(){
 		Route::get('main','MainController@index');
 
+		Route::get('pelanggan','CustomerController@index');
+
+		Route::get('teknisi','TechnicianController@index');
+
 		Route::get('jasa','ServiceController@index');
 		Route::group(['prefix'=>'jasa'],function(){
 
 		});
 		// end jasa group
+
+		Route::get('paket','PacketController@index');
+
+		Route::get('tempat','PlaceController@index');
+
+		Route::get('setting','SettingController@index');
 	});
 	// end user middleware
 });

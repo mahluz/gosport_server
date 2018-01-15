@@ -1,4 +1,5 @@
 @extends('layouts.varello')
+@section('jasa-active','open')
 @section('css')
 
 @endsection
@@ -16,22 +17,21 @@
 </header>
 
 <div class="container-fluid">
-	<div class="row">
-		<button class="btn btn-default">Make new User</button>
+    <div class="row">
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <td>No</td>
-                        <td>Username</td>
-                        <td>Email</td>
                         <td>Role</td>
+                        <td>Email</td>
+                        <td>Name</td>
                         <td>Action</td>
                     </tr>
                 </thead>
             </table>
         </div>
-	</div>
+    </div>
 </div>
 @endsection
 @section('script')

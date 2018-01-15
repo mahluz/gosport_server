@@ -67,20 +67,24 @@
                         <span class="typcn typcn-spanner sidebar-nav-link-logo"></span> Teknisi
                     </a>
                 </li>
-                <li class="sidebar-nav-link ">
-                    <a href="{{ url('jasa') }}">
+                <li class="sidebar-nav-link sidebar-nav-link-group @yield('jasa-active')">
+                    <a data-subnav-toggle href="{{ url('jasa') }}">
                         <span class="typcn typcn-shopping-cart sidebar-nav-link-logo"></span> Jasa
+                        <span class="fa fa-chevron-right subnav-toggle-icon subnav-toggle-icon-closed"></span>
+                        <span class="fa fa-chevron-down subnav-toggle-icon subnav-toggle-icon-opened"></span>
                     </a>
-                </li>
-                <li class="sidebar-nav-link ">
-                    <a href="{{ url('material') }}">
-                        <span class="typcn typcn-th-list-outline sidebar-nav-link-logo"></span> Paket
-                    </a>
-                </li>
-                <li class="sidebar-nav-link ">
-                    <a href="{{ url('material') }}">
-                        <span class="typcn typcn-th-list-outline sidebar-nav-link-logo"></span> Tempat
-                    </a>
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-nav-link ">
+                            <a href="{{ url('paket') }}">
+                                <span class="typcn typcn-th-list-outline sidebar-nav-link-logo"></span> Paket
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link ">
+                            <a href="{{ url('tempat') }}">
+                                <span class="typcn typcn-th-list-outline sidebar-nav-link-logo"></span> Tempat
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sidebar-nav-heading">
                     SUB MENU
