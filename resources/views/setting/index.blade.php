@@ -29,6 +29,17 @@
                         <td>Action</td>
                     </tr>
                 </thead>
+                <tbody>
+                    @foreach ($user as $index => $ini)
+                    <tr>
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ $ini->role }}</td>
+                        <td>{{ $ini->email }}</td>
+                        <td>{{ $ini->name }}</td>
+                        <td></td>
+                    </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>

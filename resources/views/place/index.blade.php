@@ -23,10 +23,21 @@
                 <thead>
                     <tr>
                         <td>No</td>
+                        <td>Jasa</td>
                         <td>Tempat</td>
                         <td>Action</td>
                     </tr>
                 </thead>
+                <tbody>
+                    @foreach ($place as $index => $ini)
+                    <tr>
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ $ini->service }}</td>
+                        <td>{{ $ini->place }}</td>
+                        <td></td>
+                    </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
 	</div>

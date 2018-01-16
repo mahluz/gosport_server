@@ -9,6 +9,7 @@ class ServiceController extends Controller
 {
     public function index(){
     	$data['service'] = Service::get();
+    	// dd($data);
     	return view('service.index',$data);
     }
 }
