@@ -35,7 +35,13 @@
                         <td>{{ $index+1 }}</td>
                         <td>{{ $ini->service }}</td>
                         <td>{{ $ini->description }}</td>
-                        <td></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{ $ini->id }}').submit();">Delete</button>
+                            <form method="post" action="{{ url('jasa/delete') }}" id="delete{{ $ini->id }}">
+                                <input type="hidden" name="id" value="{{ $ini->id }}">
+                                {{ csrf_field() }}
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -44,7 +44,11 @@ Route::group(['middleware'=>'web'],function(){
 
 		Route::get('jasa','ServiceController@index');
 		Route::group(['prefix'=>'jasa'],function(){
-
+			Route::get('create','ServiceController@create');
+			Route::post('store','ServiceController@store');
+			Route::get('edit','ServiceController@edit');
+			Route::post('update','ServiceController@update');
+			Route::post('delete','ServiceController@delete');
 		});
 		// end jasa group
 
@@ -62,6 +66,8 @@ Route::group(['middleware'=>'api','prefix'=>'api'],function(){
 	Route::post('auth/login','ApiController@login');
 
 	Route::group(['middleware'=>'jwt.auth'],function(){
-		Route::get('user','ApiController@getAuthUser');
+		Route::post('user','ApiController@getAuthUser');
+
+		Route::post('services','ApiController@getServices');
 	});
 });

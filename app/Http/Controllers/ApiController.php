@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Response;
 use JWTAuth;
 use JWTAuthException;
 use App\User;
+use App\Service;
 
 class ApiController extends Controller
 {
@@ -49,5 +50,13 @@ class ApiController extends Controller
     	return Response::json([
     		"result"=> $user
     	]);
+    }
+
+    public function getServices(){
+        $data = Service::get();
+        
+        return Response::json([
+            "result"=>$data
+        ]);
     }
 }

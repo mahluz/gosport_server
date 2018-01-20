@@ -22,7 +22,7 @@
                 Formulir Pengisian Data
             </div>
             <div class="panel-body">
-                <form class="form" action="{{ url('jasa/create') }}" method="post">
+                <form class="form" action="{{ url('jasa/store') }}" method="post">
                     <div class="form-group">
                         <label class="label label-default">Nama Jasa</label>
                         <input type="text" class="form-control" name="jasa">
