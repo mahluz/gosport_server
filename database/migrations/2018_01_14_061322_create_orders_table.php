@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('gender');
             $table->string('address');
             $table->string('cp');
+            $table->string('service');
             $table->string('packet');
             $table->string('place');
             $table->string('start_at');

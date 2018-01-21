@@ -69,5 +69,9 @@ Route::group(['middleware'=>'api','prefix'=>'api'],function(){
 		Route::post('user','ApiController@getAuthUser');
 
 		Route::post('services','ApiController@getServices');
+
+		Route::post('getOrders','ApiController@getOrders');
+
+		Route::post('request','ApiController@request');
 	});
 });

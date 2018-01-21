@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Response;
 use JWTAuth;
 use JWTAuthException;
 use App\User;
+use App\Order;
 use App\Service;
 
 class ApiController extends Controller
@@ -54,9 +55,28 @@ class ApiController extends Controller
 
     public function getServices(){
         $data = Service::get();
-        
+
         return Response::json([
             "result"=>$data
+        ]);
+    }
+
+    public function getOrders(Request $request){
+        $data = User::join('orders','users.id','=','orders.user_id')where('orders.user_id',$request["id"])->get();
+
+        return Response::json([
+            "result"=>$data
+        ]);
+    }
+
+    public function request(Request $request){
+
+        // $db = Order::create([
+
+        // ]);
+
+        return Response::json([
+            "result"=>$request["request"]
         ]);
     }
 }
