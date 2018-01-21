@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('technician')->default('-');
             $table->string('name');
             $table->string('age');
             $table->string('gender');
@@ -25,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->string('packet');
             $table->string('place');
             $table->string('start_at');
+            $table->string('description')->default("requested");
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

@@ -41,7 +41,7 @@ class ApiController extends Controller
     		"response"=>'success',
     		"result"=>[
     			'token' => $token,
-    		],
+    		]
     	]);
     }
 
@@ -62,7 +62,7 @@ class ApiController extends Controller
     }
 
     public function getOrders(Request $request){
-        $data = User::join('orders','users.id','=','orders.user_id')where('orders.user_id',$request["id"])->get();
+        $data = User::join('orders','users.id','=','orders.user_id')->where('orders.user_id',$request["id"])->get();
 
         return Response::json([
             "result"=>$data
@@ -70,13 +70,26 @@ class ApiController extends Controller
     }
 
     public function request(Request $request){
+        // return $request["request"];
+        $db = Order::create([
+            "user_id"=>$request["user"]["result"]["id"],
+            "name"=>$request["user"]["result"]["name"],
+            "age"=>$request["request"]["age"],
+            "gender"=>$request["request"]["gender"],
+            "address"=>$request["request"]["address"],
+            "cp"=>$request["request"]["cp"],
+            "service"=>$request["request"]["service"],
+            "packet"=>$request["request"]["packet"],
+            "place"=>$request["request"]["place"],
+            "start_at"=>$request["request"]["startat"]
+        ]);
 
-        // $db = Order::create([
-
-        // ]);
+        $data["user"] = User::where('id',$request["user"]["result"]["id"])->update([
+            "status"=>"requested"
+        ]);
 
         return Response::json([
-            "result"=>$request["request"]
+            "result"=>$db
         ]);
     }
 }

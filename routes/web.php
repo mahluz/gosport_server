@@ -39,6 +39,9 @@ Route::group(['middleware'=>'web'],function(){
 		Route::get('main','MainController@index');
 
 		Route::get('pelanggan','CustomerController@index');
+		Route::group(['prefix'=>'pelanggan'],function(){
+			Route::post('delete','CustomerController@delete');
+		});
 
 		Route::get('teknisi','TechnicianController@index');
 
