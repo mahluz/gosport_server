@@ -38,7 +38,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach ($customer as $index => $ini)
+				@foreach ($customers as $index => $ini)
 				<tr>
 					<td>{{ $index+1 }}</td>
 					<td>{{ $ini->name }}</td>
@@ -51,10 +51,16 @@
 					<td>{{ $ini->packet }}</td>
 					<td>{{ $ini->place }}</td>
 					<td>{{ $ini->start_at }}</td>
-					<td>{{ $ini->technician }}</td>
+					<td>
+						<button class="btn btn-default" type="button" onclick="event.preventDefault();document.getElementById('detail{{ $ini->id }}').submit();">Lihat Teknisi</button>
+						<form method="post" action="{{ url('pelanggan/technicianDetail') }}" id="detail{{ $ini->id }}">
+							<input type="hidden" name="technician_id" value="{{ $ini->technician }}">
+							{{ csrf_field() }}
+						</form>
+					</td>
 					<td>{{ $ini->description }}</td>
 					<td>
-						<button type="button" class="btn btn-success">Layani</button>
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal{{ $ini->id }}">Layani</button>
 						<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{ $ini->id }}').submit();">Tolak</button>
 						<form method="post" action="{{ url('pelanggan/delete') }}" id="delete{{ $ini->id }}">
 							<input type="hidden" name="id" value="{{ $ini->id }}">
@@ -67,6 +73,32 @@
 		</table>
 	</div>
 </div>
+
+@foreach ($customers as $index => $customer)
+{{-- every modal placed here --}}
+<div id="myModal{{ $customer->id }}" class="modal fade" role="dialog" style="position: relative;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form class="form" method="post" action="{{ url('pelanggan/setTechnician') }}">
+      	<div class="form-group">
+      		<label class="label label-default">Teknisi</label>
+      		<select name="technician_id" class="form-control">
+      			@foreach ($technicians as $index => $technician)
+	      			<option value="{{ $technician->id }}">{{ $technician->name }}</option>
+	      		@endforeach
+      		</select>
+      	</div>
+      	<input type="hidden" name="id" value="{{ $customer->id }}">
+      	{{ csrf_field() }}
+      	<button type="submit" class="btn btn-default btn-block">Submit</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+@endforeach
+
 @endsection
 @section('script')
 

@@ -12,12 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function(){
+	return redirect('main');
+});
 
 
 Route::get('checking',function(){
@@ -41,9 +43,18 @@ Route::group(['middleware'=>'web'],function(){
 		Route::get('pelanggan','CustomerController@index');
 		Route::group(['prefix'=>'pelanggan'],function(){
 			Route::post('delete','CustomerController@delete');
+			Route::post('setTechnician','CustomerController@setTechnician');
+			Route::post('technicianDetail','CustomerController@technicianDetail');
 		});
 
 		Route::get('teknisi','TechnicianController@index');
+		Route::group(['prefix'=>'teknisi'],function(){
+			Route::get('create','TechnicianController@create');
+			Route::post('store','TechnicianController@store');
+			Route::get('edit','TechnicianController@edit');
+			Route::post('update','TechnicianController@update');
+			Route::post('delete','TechnicianController@delete');
+		});
 
 		Route::get('jasa','ServiceController@index');
 		Route::group(['prefix'=>'jasa'],function(){
