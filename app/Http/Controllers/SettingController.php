@@ -13,4 +13,28 @@ class SettingController extends Controller
     	// dd($data['user']);
     	return view('setting.index',$data);
     }
+
+    public function create(){
+
+    	return view('setting.create');
+    }
+
+    public function store(Request $request){
+    	// dd($request);
+    	$db["user"] = User::create([
+    		"role_id"=>1,
+    		"name"=>$request["name"],
+    		"email"=>$request["email"],
+    		"password"=>bcrypt($request["password"]),
+    		"status"=>"free"
+    	]);	
+
+    	return redirect('setting');
+    }
+
+    public function delete(Request $request){
+    	// dd($request);
+    	$db["user"]= User::where("id",$request["id"])->delete();
+    	return redirect('setting');
+    }
 }

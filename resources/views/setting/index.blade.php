@@ -18,6 +18,7 @@
 
 <div class="container-fluid">
     <div class="row">
+        <a href="{{ url('setting/create') }}"><button type="button" class="btn btn-default">Create new Admin</button></a>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -36,7 +37,13 @@
                         <td>{{ $ini->role }}</td>
                         <td>{{ $ini->email }}</td>
                         <td>{{ $ini->name }}</td>
-                        <td></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{$ini->id}}').submit();">Delete</button>
+                            <form class="form" method="post" id="delete{{$ini->id}}" action="{{url('setting/delete')}}">
+                                <input type="hidden" name="id" value="{{$ini->id}}">
+                                {{csrf_field()}}
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
