@@ -10,7 +10,7 @@ class CustomerController extends Controller
 {
     public function index(){
     	$data["customers"] = User::join('orders','users.id','=','orders.user_id')->get();
-    	$data["technicians"] = User::where('role_id',3)->get();
+    	$data["technicians"] = User::where('role_id',3)->where('status','free')->get();
     	// dd($data);
     	return view('customer.index',$data);
     }

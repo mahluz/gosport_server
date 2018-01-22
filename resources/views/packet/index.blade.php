@@ -18,6 +18,7 @@
 
 <div class="container-fluid">
     <div class="row">
+        <a href="{{ url('paket/create') }}"><button type="button" class="btn btn-default">Create new Packet</button></a>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -34,7 +35,13 @@
                         <td>{{ $index+1 }}</td>
                         <td>{{ $ini->service }}</td>
                         <td>{{ $ini->packet }}</td>
-                        <td></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{ $ini->id }}').submit();">Hapus</button>
+                            <form class="form" method="post" action="{{ url('paket/delete') }}" id="delete{{ $ini->id }}">
+                                <input type="hidden" name="id" value="{{ $ini->id }}">
+                                {{ csrf_field() }}
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

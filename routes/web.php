@@ -67,8 +67,22 @@ Route::group(['middleware'=>'web'],function(){
 		// end jasa group
 
 		Route::get('paket','PacketController@index');
+		Route::group(['prefix'=>'paket'],function(){
+			Route::get('create','PacketController@create');
+			Route::post('store','PacketController@store');
+			Route::post('edit','PacketController@edit');
+			Route::post('update','PacketController@update');
+			Route::post('delete','PacketController@delete');
+		});
 
 		Route::get('tempat','PlaceController@index');
+		Route::group(['prefix'=>'tempat'],function(){
+			Route::get('create','PlaceController@create');
+			Route::post('store','PlaceController@store');
+			Route::post('edit','PlaceController@edit');
+			Route::post('update','PlaceController@update');
+			Route::post('delete','PlaceController@delete');
+		});
 
 		Route::get('setting','SettingController@index');
 	});

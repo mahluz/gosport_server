@@ -18,6 +18,7 @@
 
 <div class="container-fluid">
 	<div class="row">
+        <a href="{{ url('tempat/create') }}"><button class="btn btn-default" type="button">Daftar Tempat</button></a>
 		<div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -34,7 +35,13 @@
                         <td>{{ $index+1 }}</td>
                         <td>{{ $ini->service }}</td>
                         <td>{{ $ini->place }}</td>
-                        <td></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{ $ini->id }}').submit();">Hapus</button>
+                            <form class="form" method="post" action="{{ url('tempat/delete') }}" id="delete{{ $ini->id }}">
+                                <input type="hidden" name="id" value="{{ $ini->id }}">
+                                {{ csrf_field() }}
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
