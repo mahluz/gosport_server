@@ -98,6 +98,8 @@ Route::group(['middleware'=>'api','prefix'=>'api'],function(){
 
 		Route::post('services','ApiController@getServices');
 
+		Route::post('getForm','ApiController@getForm');
+
 		Route::post('getOrders','ApiController@getOrders');
 
 		Route::post('request','ApiController@request');

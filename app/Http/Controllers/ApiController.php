@@ -10,6 +10,8 @@ use JWTAuthException;
 use App\User;
 use App\Order;
 use App\Service;
+use App\Place;
+use App\Packet;
 
 class ApiController extends Controller
 {
@@ -61,6 +63,15 @@ class ApiController extends Controller
         ]);
     }
 
+    public function getForm(Request $request){
+        $data["packet"] = Packet::where('service_id',$request["service_id"])->get();
+        $data["place"] = Place::where('service_id',$request["service_id"])->get();
+
+        return Response::json([
+            "result"=>$data
+        ]);  
+    }
+
     public function getOrders(Request $request){
         $data = User::join('orders','users.id','=','orders.user_id')->where('orders.user_id',$request["id"])->get();
 
@@ -81,7 +92,8 @@ class ApiController extends Controller
             "service"=>$request["request"]["service"],
             "packet"=>$request["request"]["packet"],
             "place"=>$request["request"]["place"],
-            "start_at"=>$request["request"]["startat"]
+            "start_date"=>$request["request"]["start_date"],
+            "start_time"=>$request["request"]["start_time"]
         ]);
 
         $data["user"] = User::where('id',$request["user"]["result"]["id"])->update([

@@ -32,6 +32,7 @@
 					<td>Paket</td>
 					<td>Tempat</td>
 					<td>Tanggal Mulai</td>
+					<td>Waktu Mulai</td>
 					<td>Teknisi yang Menangani</td>
 					<td>Status</td>
 					<td>Action</td>
@@ -50,7 +51,8 @@
 					<td>{{ $ini->service }}</td>
 					<td>{{ $ini->packet }}</td>
 					<td>{{ $ini->place }}</td>
-					<td>{{ $ini->start_at }}</td>
+					<td>{{ $ini->start_date }}</td>
+					<td>{{ $ini->start_time }}</td>
 					<td>
 						<button class="btn btn-default" type="button" onclick="event.preventDefault();document.getElementById('detail{{ $ini->id }}').submit();">Lihat Teknisi</button>
 						<form method="post" action="{{ url('pelanggan/technicianDetail') }}" id="detail{{ $ini->id }}">

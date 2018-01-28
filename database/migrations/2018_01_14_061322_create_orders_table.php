@@ -25,7 +25,8 @@ class CreateOrdersTable extends Migration
             $table->string('service');
             $table->string('packet');
             $table->string('place');
-            $table->string('start_at');
+            $table->string('start_date');
+            $table->string('start_time');
             $table->string('description')->default("requested");
             $table->timestamps();
 
