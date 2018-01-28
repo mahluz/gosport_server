@@ -106,7 +106,7 @@ class ApiController extends Controller
     }
 
     public function getRequest(Request $request){
-        $data=Order::join('users','orders.technician','=','users.id')->where('user_id',$request["user_id"])->get();
+        $data=User::join('orders','orders.technician','=','users.id')->where('user_id',$request["user_id"])->where('description',"requested")->orWhere('description','on process')->get();
         return Response::json([
             "result"=>$data
         ]);
@@ -116,5 +116,34 @@ class ApiController extends Controller
         $data["biodata"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('user_id',$request["user_id"])->get();
 
         return Response::json($data);
+    }
+
+    public function cancelOrder(Request $request){
+        $db = Order::where('id',$request["order_id"])->delete();
+
+        return Response::json([
+            "result"=>$db
+        ]);
+    }
+
+    public function finishOrder(Request $request){
+        $data = Order::where('id',$request["order_id"])->first();
+
+        if($data["description"] == "on process"){
+            $db = Order::where('id',$request["order_id"])->update([
+                "description"=>"finished"
+            ]);
+
+            $technician = User::where("id",$data["technician"])->update([
+                "status"=>"free"
+            ]);
+        } else {
+            $db = "gagal";
+        }
+
+        return Response::json([
+            "result"=>$db
+        ]);
+
     }
 }

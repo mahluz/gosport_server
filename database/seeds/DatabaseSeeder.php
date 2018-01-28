@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
     	]);
 
         User::create([
-            "id"=>1,
+            "id"=>2,
             "role_id"=>3,
             "name"=>"zulham",
             "email"=>"ardian@gmail.com",

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Biodata;
 
 class TechnicianController extends Controller
 {
@@ -26,6 +27,10 @@ class TechnicianController extends Controller
     		"password"=>bcrypt($request["password"]),
     		"status"=>"free"
     	]);
+
+        $db["biodata_technician"] = Biodata::create([
+            "user_id"=>$db["technician"]->id
+        ]);
 
     	return redirect('teknisi');
     }

@@ -54,15 +54,18 @@
 					<td>{{ $ini->start_date }}</td>
 					<td>{{ $ini->start_time }}</td>
 					<td>
-						<button class="btn btn-default" type="button" onclick="event.preventDefault();document.getElementById('detail{{ $ini->id }}').submit();">Lihat Teknisi</button>
-						<form method="post" action="{{ url('pelanggan/technicianDetail') }}" id="detail{{ $ini->id }}">
-							<input type="hidden" name="technician_id" value="{{ $ini->technician }}">
-							{{ csrf_field() }}
-						</form>
+						@if($ini->technician != 1)
+							<button class="btn btn-default" type="button" onclick="event.preventDefault();document.getElementById('detail{{ $ini->id }}').submit();">Lihat Teknisi</button>
+							<form method="post" action="{{ url('pelanggan/technicianDetail') }}" id="detail{{ $ini->id }}">
+								<input type="hidden" name="technician_id" value="{{ $ini->technician }}">
+								{{ csrf_field() }}
+							</form>
+						@else
+							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal{{ $ini->id }}">Layani</button>
+						@endif
 					</td>
 					<td>{{ $ini->description }}</td>
 					<td>
-						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal{{ $ini->id }}">Layani</button>
 						<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{ $ini->id }}').submit();">Tolak</button>
 						<form method="post" action="{{ url('pelanggan/delete') }}" id="delete{{ $ini->id }}">
 							<input type="hidden" name="id" value="{{ $ini->id }}">

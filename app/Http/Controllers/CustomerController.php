@@ -35,8 +35,9 @@ class CustomerController extends Controller
     	return redirect('pelanggan');
     }
 
-    public function technicianDetail(){
-
-    	return view('customer.technicianDetail');
+    public function technicianDetail(Request $request){
+        $data["technician"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('users.id',$request["technician_id"])->first();
+        // dd($data);
+    	return view('customer.technicianDetail',$data);
     }
 }

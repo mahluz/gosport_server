@@ -112,5 +112,9 @@ Route::group(['middleware'=>'api','prefix'=>'api'],function(){
 		Route::post('getRequest','ApiController@getRequest');
 
 		Route::post('getBiodata','ApiController@getBiodata');
+
+		Route::post('cancelOrder','ApiController@cancelOrder');
+
+		Route::post('finishOrder','ApiController@finishOrder');
 	});
 });
