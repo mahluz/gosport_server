@@ -85,6 +85,11 @@ Route::group(['middleware'=>'web'],function(){
 		});
 
 		Route::get('setting','SettingController@index');
+		Route::group(['prefix'=>"setting"],function(){
+			Route::get('create','SettingController@create');
+			Route::post('store','SettingController@store');
+			Route::post('delete','SettingController@delete');
+		});
 	});
 	// end user middleware
 });
