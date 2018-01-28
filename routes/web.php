@@ -108,5 +108,9 @@ Route::group(['middleware'=>'api','prefix'=>'api'],function(){
 		Route::post('getOrders','ApiController@getOrders');
 
 		Route::post('request','ApiController@request');
+
+		Route::post('getRequest','ApiController@getRequest');
+
+		Route::post('getBiodata','ApiController@getBiodata');
 	});
 });

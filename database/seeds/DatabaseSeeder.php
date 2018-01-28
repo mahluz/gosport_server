@@ -42,6 +42,15 @@ class DatabaseSeeder extends Seeder
             "status"=>"free"
     	]);
 
+        User::create([
+            "id"=>1,
+            "role_id"=>3,
+            "name"=>"zulham",
+            "email"=>"ardian@gmail.com",
+            "password"=>bcrypt("ardian"),
+            "status"=>"free"
+        ]);
+
         Service::create([
             "id"=>1,
             "service" => "Aerobic",

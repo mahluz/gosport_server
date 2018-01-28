@@ -104,4 +104,17 @@ class ApiController extends Controller
             "result"=>$db
         ]);
     }
+
+    public function getRequest(Request $request){
+        $data=Order::join('users','orders.technician','=','users.id')->where('user_id',$request["user_id"])->get();
+        return Response::json([
+            "result"=>$data
+        ]);
+    }
+
+    public function getBiodata(Request $request){
+        $data["biodata"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('user_id',$request["user_id"])->get();
+
+        return Response::json($data);
+    }
 }
