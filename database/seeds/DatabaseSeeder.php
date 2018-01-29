@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
     	User::create([
     		"id"=>1,
     		"role_id"=>1,
-    		"name"=>"zulham",
+    		"name"=>"admin",
     		"email"=>"admin@gmail.com",
     		"password"=>bcrypt("admin"),
             "status"=>"free"
