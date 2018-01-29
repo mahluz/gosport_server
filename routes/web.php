@@ -96,6 +96,7 @@ Route::group(['middleware'=>'web'],function(){
 
 // API routes
 Route::group(['middleware'=>'api','prefix'=>'api'],function(){
+	Route::post('signup','ApiController@signup');
 	Route::post('auth/login','ApiController@login');
 
 	Route::group(['middleware'=>'jwt.auth'],function(){
@@ -116,5 +117,10 @@ Route::group(['middleware'=>'api','prefix'=>'api'],function(){
 		Route::post('cancelOrder','ApiController@cancelOrder');
 
 		Route::post('finishOrder','ApiController@finishOrder');
+
+		Route::post('detailOrder','ApiController@detailOrder');
+
+		Route::post('history','ApiController@history');
+
 	});
 });

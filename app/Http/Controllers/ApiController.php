@@ -12,6 +12,7 @@ use App\Order;
 use App\Service;
 use App\Place;
 use App\Packet;
+use App\Biodata;
 
 class ApiController extends Controller
 {
@@ -83,8 +84,8 @@ class ApiController extends Controller
     public function request(Request $request){
         // return $request["request"];
         $db = Order::create([
-            "user_id"=>$request["user"]["result"]["id"],
-            "name"=>$request["user"]["result"]["name"],
+            "user_id"=>$request["user"]["id"],
+            "name"=>$request["user"]["name"],
             "age"=>$request["request"]["age"],
             "gender"=>$request["request"]["gender"],
             "address"=>$request["request"]["address"],
@@ -96,7 +97,7 @@ class ApiController extends Controller
             "start_time"=>$request["request"]["start_time"]
         ]);
 
-        $data["user"] = User::where('id',$request["user"]["result"]["id"])->update([
+        $data["user"] = User::where('id',$request["user"]["id"])->update([
             "status"=>"requested"
         ]);
 
@@ -113,7 +114,7 @@ class ApiController extends Controller
     }
 
     public function getBiodata(Request $request){
-        $data["biodata"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('user_id',$request["user_id"])->get();
+        $data["biodata"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('user_id',$request["user_id"])->first();
 
         return Response::json($data);
     }
@@ -146,4 +147,38 @@ class ApiController extends Controller
         ]);
 
     }
+
+    public function detailOrder(Request $request){
+        $data["order"] = Order::where('id',$request["order_id"])->first();
+
+        $data["technician"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('users.id',$data["order"]->technician)->first();
+
+        return Response::json($data);
+
+    }
+
+    public function signup(Request $request){
+        $db["user"] = User::create([
+            "name"=>$request["name"],
+            "email"=>$request["email"],
+            "role_id"=>2,
+            "password"=>bcrypt($request["password"])
+        ]);
+
+        $db["biodata"] = Biodata::create([
+            "user_id"=>$db["user"]->id,
+            "birth_date"=>$request["birth_date"],
+            "gender"=>$request["gender"],
+            "cp"=>$request["cp"]
+        ]);
+
+        return Response::json($db);
+    }
+
+    public function history(Request $request){
+        $data["order"] = Order::join('users','users.id','=','orders.technician')->where('orders.user_id',$request["user_id"])->where('orders.description',"finished")->get();
+
+        return Response::json($data);
+    }
+
 }

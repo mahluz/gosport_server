@@ -41,7 +41,8 @@
             <section class="sidebar-user-panel">
                 <div id="user-panel-slide-toggleable">
                     <div class="user-panel-profile-picture">
-                        <img src="{{ url('public/img/profile.jpg') }}" alt="Tyrone G">
+                        {{-- <img src="{{ url('public/img/profile.jpg') }}" alt="Tyrone G"> --}}
+                        <img src="https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-9/23472010_10208630566076255_1261246062169551906_n.jpg?oh=2d5931fb3f8c3ee6bafeb363a7b24129&oe=5B1B13E5" alt="Tyrone G">
                     </div>
                     <span class="user-panel-logged-in-text"><span class="fa fa-circle-o text-success user-panel-status-icon"></span> Logged in as <strong> Zulham</strong></span>
                     <a href="app-pages/profile/update.html" class="user-panel-action-link"><span class="fa fa-pencil"></span> Manage your account</a>

@@ -34,7 +34,7 @@
                 <div class="panel-body">
                     <div class="profile-details">
                         <div class="profile-details-profile-picture">
-                            <img src="../img/user-1-profile.jpg" alt="Tyrone Gary">
+                            <img src="http://www.stickpng.com/assets/images/585e4bcdcb11b227491c3396.png" alt="{{ $technician->name }}">
                         </div>
                         <div class="profile-details-info">
                             <h2 class="profile-details-info-name">{{$technician->name}} <small>Technician at GoSport</small></h2>

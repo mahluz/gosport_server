@@ -7,6 +7,7 @@ use App\User;
 use App\Service;
 use App\Packet;
 use App\Place;
+use App\Biodata;
 
 class DatabaseSeeder extends Seeder
 {
@@ -45,10 +46,32 @@ class DatabaseSeeder extends Seeder
         User::create([
             "id"=>2,
             "role_id"=>3,
-            "name"=>"zulham",
+            "name"=>"ardian",
             "email"=>"ardian@gmail.com",
             "password"=>bcrypt("ardian"),
             "status"=>"free"
+        ]);
+
+        Biodata::create([
+            "user_id"=>1,
+            "full_name"=>"Zulham Azwar Achmad",
+            "cp"=>"089682169754",
+            "birth_date"=>"1995-12-12",
+            "gender"=>"Laki-laki",
+            "last_education"=>"S1 Universitas Negeri Semarang",
+            "profession"=>"Founder and CTO Ardata media",
+            "skill"=>"Software Engineer and Marketing"
+        ]);
+
+        Biodata::create([
+            "user_id"=>2,
+            "full_name"=>"Ardian Rizki",
+            "cp"=>"08971236512",
+            "birth_date"=>"1995-19-1",
+            "gender"=>"Laki-laki",
+            "last_education"=>"S1 Universitas Negeri Semarang",
+            "profession"=>"Founder and CEO Ardata media",
+            "skill"=>"Marketing"
         ]);
 
         Service::create([

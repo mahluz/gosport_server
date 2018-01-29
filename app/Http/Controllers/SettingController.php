@@ -9,7 +9,7 @@ use App\Role;
 class SettingController extends Controller
 {
     public function index(){
-    	$data['user'] = Role::join('users','roles.id','=','users.role_id')->get();
+    	$data['user'] = Role::join('users','roles.id','=','users.role_id')->where('role_id',1)->get();
     	// dd($data['user']);
     	return view('setting.index',$data);
     }
