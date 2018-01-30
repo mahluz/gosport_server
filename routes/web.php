@@ -39,6 +39,9 @@ Route::get('checking',function(){
 Route::group(['middleware'=>'web'],function(){
 	Route::group(['middleware'=>'userMiddleware:1'],function(){
 		Route::get('main','MainController@index');
+		Route::group(['prefix'=>'main'],function(){
+			Route::post('getData','MainController@getData');
+		});
 
 		Route::get('pelanggan','CustomerController@index');
 		Route::group(['prefix'=>'pelanggan'],function(){

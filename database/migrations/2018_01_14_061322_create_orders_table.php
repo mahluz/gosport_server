@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('technician')->default(1);
             $table->string('name');
-            $table->string('age');
+            $table->integer('age');
             $table->string('gender');
             $table->string('address');
             $table->string('cp');
