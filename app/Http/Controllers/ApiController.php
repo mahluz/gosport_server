@@ -150,7 +150,7 @@ class ApiController extends Controller
     }
 
     public function detailOrder(Request $request){
-        $data["order"] = Order::join('services','services.id','=','orders.service_id')->join('places','services.id','=','places.service_id')->where('orders.id',$request["order_id"])->first();
+        $data["order"] = Order::join('services','services.id','=','orders.service_id')->join('places','orders.place','=','places.place')->where('orders.id',$request["order_id"])->first();
 
         $data["technician"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('users.id',$data["order"]->technician)->first();
 
