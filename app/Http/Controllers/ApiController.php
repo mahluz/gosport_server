@@ -85,6 +85,7 @@ class ApiController extends Controller
         // return $request["request"];
         $db = Order::create([
             "user_id"=>$request["user"]["id"],
+            "service_id"=>$request["service"]["item"],
             "name"=>$request["user"]["name"],
             "age"=>$request["request"]["age"],
             "gender"=>$request["request"]["gender"],
@@ -102,7 +103,7 @@ class ApiController extends Controller
         ]);
 
         return Response::json([
-            "result"=>$db
+            "result"=>$request
         ]);
     }
 
@@ -149,7 +150,7 @@ class ApiController extends Controller
     }
 
     public function detailOrder(Request $request){
-        $data["order"] = Order::where('id',$request["order_id"])->first();
+        $data["order"] = Order::join('services','services.id','=','orders.service_id')->join('places','services.id','=','places.service_id')->where('orders.id',$request["order_id"])->first();
 
         $data["technician"] = User::join('biodatas','users.id','=','biodatas.user_id')->where('users.id',$data["order"]->technician)->first();
 

@@ -22,7 +22,8 @@ class PlaceController extends Controller
     	// dd($request);
     	$db["place"] = Place::create([
     		"service_id"=>$request["service_id"],
-    		"place"=>$request["place"]
+    		"place"=>$request["place"],
+            "address"=>$request["address"]
     	]);
 
     	return redirect('tempat');

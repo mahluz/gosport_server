@@ -26,6 +26,7 @@
                         <td>No</td>
                         <td>Jasa</td>
                         <td>Tempat</td>
+                        <td>Description</td>
                         <td>Action</td>
                     </tr>
                 </thead>
@@ -35,6 +36,7 @@
                         <td>{{ $index+1 }}</td>
                         <td>{{ $ini->service }}</td>
                         <td>{{ $ini->place }}</td>
+                        <td>{{ $ini->address }}</td>
                         <td>
                             <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{ $ini->id }}').submit();">Hapus</button>
                             <form class="form" method="post" action="{{ url('tempat/delete') }}" id="delete{{ $ini->id }}">

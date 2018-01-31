@@ -36,6 +36,10 @@
                         <label class="label label-default">Tempat :</label>
                         <input type="text" class="form-control" name="place">
                     </div>
+                    <div class="form-group">
+                        <label class="label label-default">Alamat :</label>
+                        <input type="text" class="form-control" name="address">
+                    </div>
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
