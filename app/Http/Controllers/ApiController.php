@@ -83,14 +83,14 @@ class ApiController extends Controller
 
     public function request(Request $request){
         // return $request["request"];
+        $user = User::with('biodata')->where('id',$request["user"]["id"])->first();
         $db = Order::create([
             "user_id"=>$request["user"]["id"],
             "service_id"=>$request["service"]["item"],
-            "name"=>$request["user"]["name"],
-            "age"=>$request["request"]["age"],
-            "gender"=>$request["request"]["gender"],
+            "name"=>$user->name,
+            "gender"=>$user["biodata"]->gender,
             "address"=>$request["request"]["address"],
-            "cp"=>$request["request"]["cp"],
+            "cp"=>$user["biodata"]->cp,
             "service"=>$request["request"]["service"],
             "packet"=>$request["request"]["packet"],
             "place"=>$request["request"]["place"],

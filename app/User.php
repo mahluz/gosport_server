@@ -29,6 +29,14 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function biodata(){
+        return $this->hasOne('App\Biodata');
+    }
+
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
