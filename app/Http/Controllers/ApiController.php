@@ -88,6 +88,7 @@ class ApiController extends Controller
             "user_id"=>$request["user"]["id"],
             "service_id"=>$request["service"]["item"],
             "name"=>$user->name,
+            "age"=>"-",
             "gender"=>$user["biodata"]->gender,
             "address"=>$request["request"]["address"],
             "cp"=>$user["biodata"]->cp,
