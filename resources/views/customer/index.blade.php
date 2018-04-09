@@ -25,7 +25,6 @@
 						<td>No</td>
 						<td>Nama Pelanggan</td>
 						<td>Email</td>
-						<td>Umur</td>
 						<td>jenis Kelamin</td>
 						<td>Alamat</td>
 						<td>Contact Person</td>
@@ -45,7 +44,6 @@
 						<td>{{ $index+1 }}</td>
 						<td>{{ $ini->name }}</td>
 						<td>{{ $ini->email }}</td>
-						<td>{{ $ini->age }}</td>
 						<td>{{ $ini->gender }}</td>
 						<td>{{ $ini->address }}</td>
 						<td>{{ $ini->cp }}</td>
